@@ -3,9 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/style/general.css">
+    <link rel="stylesheet" href="/style/customer.css">
+    <link rel="stylesheet" href="/style/item.css">
+    <link rel="stylesheet" href="/style/placOrder.css">
+    <title>Point Of Sale System</title>
 </head>
 <body>
+    <nav class="navbar">
+        <div><p class="sec-name">Point of Sales System</p></div>
+        <ul class="nav-links">
+          <li><a href="#HomePage" class="nav-link" >Home</a></li>
+          <li><a href="#CustomerManage" class="nav-link" >Customer</a></li>
+          <li><a href="#ItemManage" class="nav-link" >Item</a></li>
+          <li><a href="#OrderManage" class="nav-link" >Orders</a></li>
+        </ul>
+      </nav>
+  
+      <section id="HomePage"></section>
+      <section class="customer-sec" id="CustomerManage"  style="display: none;">  
+        <form class="form">
+          <div class="form-header">
+            <h1>Customer Registration</h1>
+          </div>
+         <div class="input-sec">
+          <div class="input-field">
+            <p>Customer ID</p>
+            <input type="text" name="" id="cus-ID">
+            <p class="error" id="cusId-error"></p>
+          </div>
+         
+          <div class="input-field">
+            <p>Customer Name</p>
+            <input type="text" name="" id="cus-name">
+            <p class="error" id="cusName-error"></p>
+          </div>
+         
+          <div class="input-field">
+            <p>Customer Address</p>
+            <input type="text" name="" id="cus-address">
+            <p class="error" id="cusAddress-error"></p>
+          </div>
+         
+          <div class="input-field">
+            <p>Customer Salary</p>
+            <input type="text" name="" id="cus-salary">
+            <p class="error" id="cusSalary-error"></p>
+          </div>
+         </div>
+         
     
+          <div class="btn-sec">
+            <button id="save-cus">Save Customer</button>
+            <button id="remove-cus">Remove</button>
+            <button id="update-cus">Update</button>
+            <button id="getall-cus">Get All</button>
+            <button id="clear">Clear All</button>
+          </div>
+        </form>
+
+        <div class="data-collection">
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>Customer ID</th>
+                  <th>Customer Name</th>
+                  <th>Customer Address</th>
+                  <th>Customer Salary</th>
+                </tr>
+              </thead>
+              <tbody id="cus-table-body">  
+              </tbody>
+            </table>
+          </div>
+        </section>
+      
+      
+        <section class="item-sec" id="ItemManage" style="display: none;" >
+          <form class="form">
+            <div class="form-header">
+              <h1>Item Form</h1>
+            </div>
+
+           <div class="input-sec">
+            <div class="input-field">
+              <p>Item Code</p>
+              <input type="text" name="" id="item-code">
+              <p class="error" id="itemCode-error"></p>
+            </div>
+           
+            <div class="input-field">
+              <p>Item Name</p>
+              <input type="text" name="" id="item-name">
+              <p class="error" id="itemName-error"></p>
+            </div>
+           
+            <div class="input-field">
+              <p>Item Qty</p>
+              <input type="text" name="" id="item-qty">
+              <p class="error" id="itemQty-error"></p>
+            </div>
+           
+            <div class="input-field">
+              <p>Unit Price</p>
+              <input type="text" name="" id="unit-price">
+              <p class="error" id="unitPrice-error"></p>
+            </div>
+           </div>
+           
+      
+            <div class="btn-sec">
+              <button id="add-item">Add Item</button>
+              <button id="remove-item">Remove</button>
+              <button id="update-item">Update</button>
+              <button id="getall-item">Get All</button>
+              <button id="clear-item">Clear All</button>
+            </div>
+          </form>
+      
+          <div class="data-collection">
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Item Name</th>
+                  <th>Item Qty</th>
+                  <th>Item Price</th>
+                </tr>
+              </thead>
+              <tbody id="item-table-body">
+              </tbody>
+            </table>
+          </div>  
+        </section>
+
+        <section class="order-sec" id="OrderManage" style="display: none;">
+            <div class="order-div">
+              <form class="invoice-detail">
+                <p class="i-header">
+                  Invoice Details
+                </p>
+                
+                <div class="invoice-inputs">
+                   <div>
+                    <p>Order ID:</p>
+                    <input type="text" name="" id="order-id">
+                   </div>
+          
+                   <div>
+                    <p>Date:</p>
+                    <input type="text" id="order-date" placeholder="mm/dd/yyyy"></p>
+                   </div>
+          
+                   <div>
+                    <p>Customer:</p>
+                    <select id="customer-list" >
+                      <option value="" disabled selected>Select Customer</option>  
+                  </select>
+                   </div>
+          
+                   <div>
+                    <p>Customer ID:</p>
+                    <input type="text" id="cus-id-order"></p>
+                   </div>
+          
+                   <div>
+                    <p>Name:</p>
+                    <input type="text" id="cus-name-order"></p>
+                   </div>
+          
+                   <div>
+                    <p>Salary:</p>
+                    <input type="text" id="cus-salary-order"></p>
+                   </div> 
+                </div>
+          
+                <div id="input-address">
+                  <p>Address:</p>
+                  <input type="text" id="cus-address-order"></p>
+                 </div> 
+                </form>
+          
+              <form class="item-select">
+                <p class="i-header">
+                  Item Select
+                </p>
+          
+                <div class="item-inputs">
+                  <div class="f-row">
+                    <div>
+                      <p>Item:</p>
+                      <select id="item-list" >
+                        <option value="" disabled selected>Select Item</option>    
+                    </select>
+                    </div>
+                    <div>
+                      <p>Item Code:</p>
+                      <input type="text" name="" id="item-code-order">
+                    </div>
+                  </div>
+                  <div class="s-row">
+  
+                    <div>
+                      <p>Item Name:</p>
+                      <input type="text" id="item-name-order">
+                    </div>
+          
+                    <div>
+                      <p>Price:</p>
+                      <input type="text" id="item-price-order">
+                    </div>
+          
+                    <div>
+                      <p>QtyOnH:</p>
+                      <input type="text" id="item-qty-order">
+                    </div>
+                  </div>
+          
+                  <div class="l-row">
+          
+                    <div>
+                      <p>Order Quantity:</p>
+                      <input type="text" id="ordered-qty">
+                    </div>
+          
+                  </div>
+          
+                  <div>
+                    <button id="additem-btn">Add Item</button>
+                  </div>
+                </div>
+          
+              </form>
+          
+              <form class="purchase-form">
+                <div class="payment-detail">
+                  <p class="total">
+                   Total: <span id="total-order">0.00</span>
+                  </p>
+                  <p class="subtotal">
+                    Sub Total: <span id="sub-total-order">0.00</span>
+                  </p>
+                </div>
+          
+                <div class="cash-discount">
+                  <div>
+                    <p>Cash</p>
+                    <input type="text" id="paidAmount">
+                  </div>
+                  <div>
+                    <p>Discount</p>
+                    <input type="text" id="discount" >
+                  </div>
+                </div>
+          
+                <div class="bal">
+                  <p>Balance</p>
+                  <input type="text" id="balance">
+                </div>
+          
+                <div class="p-btn-sec">
+                  <button id="btn-purchase">Purchase</button>
+                </div>
+              </form>
+            </div>
+            <div class="transaction-collection">
+              <table id="cart-table">
+                <thead>
+                  <tr>
+                    <th>Item Code</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+        
+                <tbody id="cart-table-body">
+                </tbody>
+              </table>
+            </div>  
+          </section>
+
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+
+          <script type="module" src="controller/IndexController.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,300 @@
+
+
+.order-div{
+
+    padding: 20px;
+    height: auto ;
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 30% 38% 24%;
+    gap: 2%;
+   
+  }
+  
+  /* invoice detail css  */
+  .invoice-detail{
+    background-color: rgb(255, 255, 255);
+    /* height: 56%; */
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+  
+   select{
+    font-size: 16px;
+    width: 90%;
+    height: 4.3vh;
+    border-radius: 4px;
+    padding-left: 2px;
+    border: 1px solid gray;
+    outline: none;
+  }
+  
+  .i-header{
+    padding: 20px;
+    margin: 0;
+    color: #fff;
+    background-color: rgb(39, 168, 68) ;
+    border-radius: 5px 5px 0px 0px;
+  }
+  
+  .invoice-inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2%;
+  }
+  
+  .invoice-inputs div{
+    margin-left: 5%; 
+  }
+  
+  .invoice-inputs p{
+    font-size: 14px;
+    margin: 5% 0px 2px 0px;
+  }
+  
+  .invoice-inputs input{
+    width: 90%;
+    border: 1px solid gray;
+    border-radius: 4px;
+    height: 4vh;
+    
+  }
+  
+  #input-address{
+    margin-left: 2.5%;
+  }
+  
+  #input-address p{
+    font-size: 14px;
+    margin: 5% 0px 2px 0px;
+  }
+  
+  #input-address input{
+    width: 94%;
+    border: 1px solid gray;
+    border-radius: 4px;
+    height: 5vh;
+  }
+  
+  
+    /* item select css  */
+  
+    .item-select{
+      background-color: rgb(255, 255, 255);
+      /* height: 56%; */
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+  
+    .f-row{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 2%;
+      
+    }
+  
+    .item-inputs input{
+      width: 90%;
+      border: 1px solid gray;
+      border-radius: 4px;
+      height: 4vh; 
+    }
+  
+    .item-inputs div{
+      margin-left: 2%;
+    }
+  
+    .item-inputs p{
+      font-size: 14px;
+      margin: 5% 0px 2px 0px;
+    }
+  
+    .s-row {
+      display: grid;
+      grid-template-columns: 3fr 2fr 1.5fr;
+      align-items: center; 
+      width: 96%;
+      margin-top: 2%;
+    }
+  
+    .s-row > div {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .s-row input {
+      padding: 5px; 
+      box-sizing: border-box; 
+    }
+    
+    .l-row div{
+      margin-left: 1%;
+    }
+
+    .l-row input{
+      width: 95%;
+    }
+   
+    #additem-btn{
+      width: 20%;
+      padding: 2%;
+      margin-left: 76%;
+      margin-top: 5%;
+      background-color: rgb(232, 48, 72);
+      color: #fff;
+      font-size: 14px;
+      border: 1px solid  rgb(232, 48, 72);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  
+    /* purchase form css  */
+  
+    .purchase-form{
+      background-color: rgb(255, 255, 255);
+      /* height: 56%; */
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+
+    .payment-detail p{
+      font-size: 24px;
+      width: 90%; 
+    }
+  
+    .subtotal{
+      color: rgb(232, 48, 72);
+      margin: 3% 0% 0% 5% ;
+    }
+  
+    .total{
+      color: rgb(0, 122, 255) ;
+      margin: 6% 0% 0% 5%;
+    }
+  
+    .cash-discount{
+      display: flex;
+    }
+  
+    .cash-discount div{
+      margin-top: 15%;
+      margin-left: 5%;
+    }
+
+    .cash-discount p{
+      font-size: 14px;
+      margin: 5% 0px 2px 0px;
+    }
+  
+    .cash-discount input{
+      width: 90%;
+      border: 1px solid gray;
+      border-radius: 4px;
+      height: 4vh;
+    }
+  
+    .bal{
+      margin-left: 5%;
+    }
+  
+    .bal p{
+      font-size: 14px;
+      margin: 5% 0px 2px 0px;
+    }
+  
+    .bal input{
+      width: 95%;
+      border: 1px solid gray;
+      border-radius: 4px;
+      height: 4vh;
+    }
+  
+    .p-btn-sec{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #btn-purchase{
+      padding: 3% 5%;
+      margin-top: 20% ;
+      margin-bottom: 5%;
+      background-color: rgb(39, 168, 68);
+      color: #fff;
+      font-size: 14px;
+      border: 1px solid rgb(39, 168, 68);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  
+    /* table css  */
+    
+  .transaction-collection{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+  }
+  
+  #cart-table{
+    border-collapse: collapse;
+    width: 92%;
+    height: auto;
+    margin-left: 4%;
+  }
+  
+  #cart-table th,td {
+    padding: 16px  6vw 16px 16px;
+    border: 1px solid gray;
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  #cart-table th{
+    background-color: rgb(1, 191, 165);
+    color: #fff;
+  }
+  
+  
+  .btn-danger{
+    background-color: rgb(232, 48, 72);
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid rgb(232, 48, 72);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+   /* Responsive Codes  */
+  
+  @media screen and (max-width: 1260px) {
+    .order-div{
+      grid-template-columns: 50% 50%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .order-div{
+      grid-template-columns: 90%;
+    }
+    
+    .purchase-form{
+      margin-bottom: 5%;
+    }
+  
+    #additem-btn{
+      margin-left: 70%;
+      margin-bottom: 5%;
+    }
+  
+    #btn-purchase{
+      margin-top: 5% ;
+      margin-bottom: 5%;
+    }
+  }
