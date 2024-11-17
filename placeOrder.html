@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/general.css">
+  <link rel="stylesheet" href="style/placOrder.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <title>Place Order Form</title>
+</head>
+<body>
+  <section class="order-sec">
+
+    <div class="order-div">
+      <form class="invoice-detail">
+        <p class="i-header">
+          Invoice Details
+        </p>
+        
+        <div class="invoice-inputs">
+           <div>
+            <p>Order ID:</p>
+            <input type="text" name="" id="order-id">
+           </div>
+  
+           <div>
+            <p>Date:</p>
+            <input type="text" id="datepicker" placeholder="mm/dd/yyyy"></p>
+           </div>
+  
+           <div>
+            <p>Customer:</p>
+            <input type="text" id="datepicker" placeholder="mm/dd/yyyy"></p>
+           </div>
+  
+           <div>
+            <p>Customer ID:</p>
+            <input type="text" id="datepicker" placeholder="mm/dd/yyyy"></p>
+           </div>
+  
+           <div>
+            <p>Name:</p>
+            <input type="text" id="datepicker" placeholder="mm/dd/yyyy"></p>
+           </div>
+  
+           <div>
+            <p>Salary:</p>
+            <input type="text" id="datepicker" placeholder="mm/dd/yyyy"></p>
+           </div> 
+        </div>
+  
+        <div id="input-address">
+          <p>Address:</p>
+          <input type="text" id="datepicker"></p>
+         </div> 
+        </form>
+ 
+      <form class="item-select">
+        <p class="i-header">
+          Item Select
+        </p>
+        <div class="item-inputs">
+          <div class="f-row">
+            <div>
+              <p>Item:</p>
+              <input type="text" name="" id="item-ID" placeholder="Select Item Code">
+            </div>
+            <div>
+              <p>Item Code:</p>
+              <input type="text" name="" id="item-code">
+            </div>
+          </div>
+  
+          <div class="s-row">
+            <div>
+              <p>Item Name:</p>
+              <input type="text" id="item-name">
+            </div>
+  
+            <div>
+              <p>Price:</p>
+              <input type="text" id="item-price">
+            </div>
+  
+            <div>
+              <p>QtyOnH:</p>
+              <input type="text" id="item-qty">
+            </div>
+          </div>
+
+          <div class="l-row">
+            <div>
+              <p>Order Quantity:</p>
+              <input type="text">
+            </div>
+          </div>
+          <div>
+            <button id="additem-btn">Add Item</button>
+          </div>
+        </div>
+      </form>
+  
+      <form class="purchase-form">
+        <div class="payment-detail">
+          <p class="total">
+            Total : 00.0Rs/=
+          </p>
+          <p class="subtotal">
+            SubTotal : 00.0Rs/=
+          </p>
+        </div>
+  
+        <div class="cash-discount">
+          <div>
+            <p>Cash</p>
+            <input type="text">
+          </div>
+          <div>
+            <p>Discount</p>
+            <input type="text">
+          </div>
+        </div>
+  
+        <div class="bal">
+          <p>Balance</p>
+          <input type="text">
+        </div>
+  
+        <div class="p-btn-sec">
+          <button id="btn-purchase">Purchase</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="transaction-collection">
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+  </script>
+</body>
+</html>
