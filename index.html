@@ -1,299 +1,1344 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/general.css">
-    <link rel="stylesheet" href="/style/placOrder.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <title>Point Of Sale System</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div><p class="sec-name">Point of Sales System</p></div>
-        <ul class="nav-links">
-          <li><a href="#HomePage" class="nav-link" >Home</a></li>
-          <li><a href="#CustomerManage" class="nav-link" >Customer</a></li>
-          <li><a href="#ItemManage" class="nav-link" >Item</a></li>
-          <li><a href="#OrderManage" class="nav-link" >Orders</a></li>
-        </ul>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-md navbar-light bg-light border-bottom border-success border-3 rounded-3 mb-4"
+      >
+        <div class="container-fluid">
+          <a
+            class="navbar-brand fw-bold border-2 border-end border-success pe-3"
+            href="#"
+          >
+            Point Of Sale System
+          </a>
+          <button
+            id="burger-btn"
+            class="navbar-toggler border-2 border-success"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul id="nav-bar" class="navbar-nav ml-auto w-100 ms-lg-3">
+              <li class="nav-item" id="tab-1" onclick="showTab(1)">
+                <a class="nav-link fw-semibold active" href="#"
+                  ><i class="bi bi-house"></i> Home</a
+                >
+              </li>
+              <li class="nav-item" id="tab-2" onclick="showTab(2)">
+                <a class="nav-link fw-semibold text-success" href="#"
+                  ><i class="bi bi-house"></i> Customers</a
+                >
+              </li>
+              <li class="nav-item" id="tab-3" onclick="showTab(3)">
+                <a class="nav-link fw-semibold text-success" href="#"
+                  ><i class="bi bi-cart"></i> Orders</a
+                >
+              </li>
+              <li class="nav-item" id="tab-4" onclick="showTab(4)">
+                <a class="nav-link fw-semibold text-success" href="#"
+                  ><i class="bi bi-box"></i> Items</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
-  
-      <section id="HomePage"></section>
-      <section class="customer-sec" id="CustomerManage"  style="display: none;">  
-        <form class="form">
-          <div class="form-header">
-            <h1>Customer Registration</h1>
-          </div>
-         <div class="input-sec">
-          <div class="input-field">
-            <p>Customer ID</p>
-            <input type="text" name="" id="cus-ID">
-            <p class="error" id="cusId-error"></p>
-          </div>
-         
-          <div class="input-field">
-            <p>Customer Name</p>
-            <input type="text" name="" id="cus-name">
-            <p class="error" id="cusName-error"></p>
-          </div>
-         
-          <div class="input-field">
-            <p>Customer Address</p>
-            <input type="text" name="" id="cus-address">
-            <p class="error" id="cusAddress-error"></p>
-          </div>
-         
-          <div class="input-field">
-            <p>Customer Salary</p>
-            <input type="text" name="" id="cus-salary">
-            <p class="error" id="cusSalary-error"></p>
-          </div>
-         </div>
-         
-    
-          <div class="btn-sec">
-            <button id="save-cus">Save Customer</button>
-            <button id="remove-cus">Remove</button>
-            <button id="update-cus">Update</button>
-            <button id="getall-cus">Get All</button>
-            <button id="clear">Clear All</button>
-          </div>
-        </form>
+    </header>
 
-        <div class="data-collection">
-            <table id="data-table">
-              <thead>
-                <tr>
-                  <th>Customer ID</th>
-                  <th>Customer Name</th>
-                  <th>Customer Address</th>
-                  <th>Customer Salary</th>
-                </tr>
-              </thead>
-              <tbody id="cus-table-body">  
-              </tbody>
-            </table>
+    <main>
+      <section id="tab-content-1" class="d-block">
+        <div class="container">
+          <div class="row label p-2 m-auto">
+            <div class="col-lg-12">
+              <h1 class="fw-medium text-start my-auto">
+                <i class="fa-solid fa-house"></i>
+                Home
+              </h1>
+            </div>
           </div>
-        </section>
-      
-      
-        <section class="item-sec" id="ItemManage" style="display: none;" >
-          <form class="form">
-            <div class="form-header">
-              <h1>Item Form</h1>
-            </div>
-
-           <div class="input-sec">
-            <div class="input-field">
-              <p>Item Code</p>
-              <input type="text" name="" id="item-code">
-              <p class="error" id="itemCode-error"></p>
-            </div>
-           
-            <div class="input-field">
-              <p>Item Name</p>
-              <input type="text" name="" id="item-name">
-              <p class="error" id="itemName-error"></p>
-            </div>
-           
-            <div class="input-field">
-              <p>Item Qty</p>
-              <input type="text" name="" id="item-qty">
-              <p class="error" id="itemQty-error"></p>
-            </div>
-           
-            <div class="input-field">
-              <p>Unit Price</p>
-              <input type="text" name="" id="unit-price">
-              <p class="error" id="unitPrice-error"></p>
-            </div>
-           </div>
-           
-      
-            <div class="btn-sec">
-              <button id="add-item">Add Item</button>
-              <button id="remove-item">Remove</button>
-              <button id="update-item">Update</button>
-              <button id="getall-item">Get All</button>
-              <button id="clear-item">Clear All</button>
-            </div>
-          </form>
-      
-          <div class="data-collection">
-            <table id="data-table">
-              <thead>
-                <tr>
-                  <th>Item Code</th>
-                  <th>Item Name</th>
-                  <th>Item Qty</th>
-                  <th>Item Price</th>
-                </tr>
-              </thead>
-              <tbody id="item-table-body">
-              </tbody>
-            </table>
-          </div>  
-        </section>
-
-        <section class="order-sec" id="OrderManage" style="display: none;">
-            <div class="order-div">
-              <form class="invoice-detail">
-                <p class="i-header">
-                  Invoice Details
-                </p>
-                
-                <div class="invoice-inputs">
-                   <div>
-                    <p>Order ID:</p>
-                    <input type="text" name="" id="order-id">
-                   </div>
-          
-                   <div>
-                    <p>Date:</p>
-                    <input type="text" id="order-date" placeholder="mm/dd/yyyy"></p>
-                   </div>
-          
-                   <div>
-                    <p>Customer:</p>
-                    <select id="customer-list" >
-                      <option value="" disabled selected>Select Customer</option>  
-                  </select>
-                   </div>
-          
-                   <div>
-                    <p>Customer ID:</p>
-                    <input type="text" id="cus-id-order"></p>
-                   </div>
-          
-                   <div>
-                    <p>Name:</p>
-                    <input type="text" id="cus-name-order"></p>
-                   </div>
-          
-                   <div>
-                    <p>Salary:</p>
-                    <input type="text" id="cus-salary-order"></p>
-                   </div> 
+          <div class="row content p-1 m-auto">
+            <div class="col-lg-12 px-0 py-3 px-lg-3">
+              <div class="row m-auto mb-4">
+                <div class="col-12">
+                  <!-- <img
+                    id="pos-home-image"
+                    src="/assets/images/Screenshot 2024-11-17 184955.png"
+                    alt="pos-image"
+                  /> -->
                 </div>
-          
-                <div id="input-address">
-                  <p>Address:</p>
-                  <input type="text" id="cus-address-order"></p>
-                 </div> 
+              </div>
+              <div class="row m-auto">
+                <div class="col-lg-4">
+                  <h2
+                    class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                  >
+                    Customers
+                  </h2>
+                  <div
+                    class="bg-light p-3 d-flex align-items-center justify-content-center"
+                  >
+                    <i class="fa-solid fa-users icon py-5 me-3"></i>
+                    <p id="customer-counter" class="py-5 me-5 fs-1 ms-5">00</p>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <h2
+                    class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                  >
+                    Items
+                  </h2>
+                  <div
+                    class="bg-light p-3 d-flex align-items-center justify-content-center"
+                  >
+                    <i class="fa-solid fa-cubes icon py-5 me-3"></i>
+                    <p id="item-counter" class="py-5 me-5 fs-1 ms-5">00</p>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <h2
+                    class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                  >
+                    Orders
+                  </h2>
+                  <div
+                    class="bg-light p-3 d-flex align-items-center justify-content-center"
+                  >
+                    <i class="fa-solid fa-cart-shopping icon py-5 me-3"></i>
+                    <p id="order-counter" class="py-5 me-5 fs-1 ms-5">00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customers Section -->
+      <section id="tab-content-2" class="d-none">
+        <div class="container">
+          <div class="row label p-2 m-auto">
+            <div class="col-lg-12">
+              <h1 class="fw-medium text-start my-auto">
+                <i class="fa-solid fa-users"></i>
+                Customers
+              </h1>
+            </div>
+          </div>
+          <div class="row content p-1 m-auto">
+            <div class="col-lg-12 px-0 py-3 px-lg-3">
+              <div class="row m-auto">
+                <div class="col-lg-6">
+                  <h2
+                    class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                  >
+                    Customer Search
+                  </h2>
+                  <div class="search bg-light p-3">
+                    <form id="search-customer" class="px-2" action="search">
+                      <div class="mb-3">
+                        <input
+                          type="text"
+                          id="txt-search-valuec"
+                          class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                          placeholder="Input ID/Name/Contact No Here"
+                        />
+                        <div class="invalid-feedback error-bg">
+                          Please enter a valid ID, Name, or Contact Number
+                        </div>
+                        <div class="d-flex mt-3">
+                          <button
+                            type="submit"
+                            class="btn btn-success rounded-1"
+                          >
+                            Search
+                          </button>
+                          <select
+                            id="search-customer-by"
+                            class="form-select ms-2 w-25 border-1 border-dark-subtle rounded-1"
+                          >
+                            <option>ID</option>
+                            <option>Name</option>
+                            <option>Contact No</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="col-lg-6 pt-3 pt-lg-0 d-flex justify-content-lg-end justify-content-center"
+                >
+                  <div class="w-75">
+                    <button
+                      class="btn btn-info px-4 rounded-1 w-100 mb-1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#newCustomerModal"
+                    >
+                      New Customer
+                    </button>
+                    <button
+                      id="load-all-customer-btn"
+                      class="btn btn-warning px-4 rounded-1 w-100"
+                    >
+                      View All Customers
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row button-set m-auto">
+                <div class="col-12 px-3">
+                  <div
+                    class="p-lg-3 py-3 d-flex justify-content-lg-start justify-content-center gap-1"
+                  >
+                    <button
+                      id="delete-customer-btn"
+                      class="btn btn-danger px-4 rounded-1"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      class="btn btn-info text-white px-4 rounded-1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#updateCustomerModal"
+                    >
+                      Update
+                    </button>
+                    <button
+                      id="clear-customer-btn"
+                      class="btn btn-success text-white px-4 rounded-1"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row table-content m-auto">
+                <div class="col-12">
+                  <div class="table-responsive text-center">
+                    <table class="table table-hover">
+                      <thead class="table-success">
+                        <tr>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 20%"
+                          >
+                            Customer ID
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 30%"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 30%"
+                          >
+                            Address
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 20%"
+                          >
+                            Contact No
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        id="customer-tbody"
+                        class="border-1 border-success-subtle"
+                      ></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------ New Customer Model ------------ -->
+        <div class="modal fade" id="newCustomerModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+              <div class="modal-header bg-success text-white rounded-0">
+                <h5 class="modal-title">New Customer</h5>
+                <button
+                  type="button"
+                  id="close-savec-icon"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form id="save-customer">
+                  <div class="mb-1">
+                    <label for="txt-save-cid" class="form-label fw-bold"
+                      >Customer ID :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-save-cid"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^C[0-9]{3,}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Customer ID is required [ Pattern : C00X ]
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-save-cname" class="form-label fw-bold"
+                      >Customer Name :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-save-cname"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^([A-Z]\.[A-Z]\. )?[A-Z][a-z]*( [A-Z][a-z]*)*$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Customer name is required and must follow the correct
+                      format
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-save-caddress" class="form-label fw-bold"
+                      >Customer Address :</label
+                    >
+                    <textarea
+                      id="txt-save-caddress"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      rows="3"
+                      pattern="^[A-Za-z0-9\s,./-]+(?:\s+[A-Za-z0-9\s,./-]+)*$"
+                    ></textarea>
+                    <div class="invalid-feedback error-bg">
+                      Customer address is required and must follow the correct
+                      format
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-save-cno" class="form-label fw-bold"
+                      >Customer Contact No :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-save-cno"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^[0-9]{10}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Enter a valid 10-digit contact number
+                    </div>
+                  </div>
+
+                  <div class="modal-footer button-set mt-4">
+                    <button
+                      type="submit"
+                      class="btn btn-info rounded-1 text-light"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      id="close-savec-btn"
+                      class="btn btn-danger rounded-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </form>
-          
-              <form class="item-select">
-                <p class="i-header">
-                  Item Select
-                </p>
-          
-                <div class="item-inputs">
-                  <div class="f-row">
-                    <div>
-                      <p>Item:</p>
-                      <select id="item-list" >
-                        <option value="" disabled selected>Select Item</option>    
-                    </select>
-                    </div>
-                    <div>
-                      <p>Item Code:</p>
-                      <input type="text" name="" id="item-code-order">
-                    </div>
-                  </div>
-                  <div class="s-row">
-  
-                    <div>
-                      <p>Item Name:</p>
-                      <input type="text" id="item-name-order">
-                    </div>
-          
-                    <div>
-                      <p>Price:</p>
-                      <input type="text" id="item-price-order">
-                    </div>
-          
-                    <div>
-                      <p>QtyOnH:</p>
-                      <input type="text" id="item-qty-order">
-                    </div>
-                  </div>
-          
-                  <div class="l-row">
-          
-                    <div>
-                      <p>Order Quantity:</p>
-                      <input type="text" id="ordered-qty">
-                    </div>
-          
-                  </div>
-          
-                  <div>
-                    <button id="additem-btn">Add Item</button>
-                  </div>
-                </div>
-          
-              </form>
-          
-              <form class="purchase-form">
-                <div class="payment-detail">
-                  <p class="total">
-                   Total: <span id="total-order">0.00</span>
-                  </p>
-                  <p class="subtotal">
-                    Sub Total: <span id="sub-total-order">0.00</span>
-                  </p>
-                </div>
-          
-                <div class="cash-discount">
-                  <div>
-                    <p>Cash</p>
-                    <input type="text" id="paidAmount">
-                  </div>
-                  <div>
-                    <p>Discount</p>
-                    <input type="text" id="discount" >
-                  </div>
-                </div>
-          
-                <div class="bal">
-                  <p>Balance</p>
-                  <input type="text" id="balance">
-                </div>
-          
-                <div class="p-btn-sec">
-                  <button id="btn-purchase">Purchase</button>
-                </div>
-              </form>
+              </div>
             </div>
-            <div class="transaction-collection">
-              <table id="cart-table">
-                <thead>
-                  <tr>
-                    <th>Item Code</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-        
-                <tbody id="cart-table-body">
-                </tbody>
-              </table>
-            </div>  
-          </section>
+          </div>
+        </div>
 
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+        <!-- ------------ Update Customer Model ------------ -->
+        <div class="modal fade" id="updateCustomerModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+              <div class="modal-header bg-success text-white rounded-0">
+                <h5 class="modal-title">Update Customer</h5>
+                <button
+                  type="button"
+                  id="close-updatec-icon"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form id="update-customer">
+                  <div class="mb-1">
+                    <label for="txt-update-cid" class="form-label fw-bold"
+                      >Customer ID :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-update-cid"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^C[0-9]{3,}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Customer ID is [ Pattern : C00X ]
+                    </div>
+                  </div>
 
-          <script type="module" src="controller/IndexController.js"></script>
+                  <div class="mb-1">
+                    <label for="txt-update-cname" class="form-label fw-bold"
+                      >Customer Name :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-update-cname"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^([A-Z]\.[A-Z]\. )?[A-Z][a-z]*( [A-Z][a-z]*)*$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Customer name is required and must follow the correct
+                      format
+                    </div>
+                  </div>
 
-          <script type="module" src="controller/CustomerController.js"></script>
-          <script type="module" src="dto/CustomerDto.js"></script>
+                  <div class="mb-1">
+                    <label for="txt-update-caddress" class="form-label fw-bold"
+                      >Customer Address :</label
+                    >
+                    <textarea
+                      id="txt-update-caddress"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      rows="3"
+                      pattern="^[A-Za-z0-9\s,./-]+(?:\s+[A-Za-z0-9\s,./-]+)*$"
+                    ></textarea>
+                    <div class="invalid-feedback error-bg">
+                      Customer address is required and must follow the correct
+                      format
+                    </div>
+                  </div>
 
- 
-          <script type="module" src="controller/ItemController.js"></script>
-          <script type="module" src="dto/ItemDto.js"></script>
+                  <div class="mb-1">
+                    <label for="txt-update-cno" class="form-label fw-bold"
+                      >Customer Contact No :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-update-cno"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^[0-9]{10}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Enter a valid 10-digit contact number
+                    </div>
+                  </div>
 
-          <script type="module" src="controller/OrderController.js"></script>  
-</body>
+                  <div class="modal-footer button-set mt-4">
+                    <button
+                      type="submit"
+                      class="btn btn-info rounded-1 text-light"
+                    >
+                      Update
+                    </button>
+                    <button
+                      type="button"
+                      id="close-updatec-btn"
+                      class="btn btn-danger rounded-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Orders Section -->
+      <section id="tab-content-3" class="d-none">
+        <div class="container">
+          <div class="row label p-2 m-auto">
+            <div class="col-lg-12">
+              <h1 class="fw-medium text-start my-auto">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Orders
+              </h1>
+            </div>
+          </div>
+          <div class="row content p-1 m-auto">
+            <div class="col-lg-12 px-0 py-3 px-lg-3">
+              <div class="row m-auto">
+                <div class="col-lg-5">
+                  <h2
+                    class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                  >
+                    Order Search / Invoice Details
+                  </h2>
+                  <div
+                    class="search bg-light p-3 position-relative order-search-box"
+                  >
+                    <form id="search-order" class="px-2" action="search">
+                      <div class="d-flex mb-4 mt-3">
+                        <div class="w-100 d-flex flex-column">
+                          <input
+                            type="text"
+                            id="txt-search-order"
+                            class="form-control border-1 border-dark-subtle rounded-1"
+                            placeholder="Input Order ID Here"
+                            pattern="^O[0-9]{3,}$"
+                          />
+                          <div class="invalid-feedback error-bg">
+                            Order ID is required [ Pattern : O00X ]
+                          </div>
+                        </div>
+                        <div class="ms-2">
+                          <button
+                            type="submit"
+                            class="btn btn-success rounded-1"
+                          >
+                            Search
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    <form id="invoice-details" class="px-2 mt-4">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <label
+                              for="txt-order-id"
+                              class="form-label fw-bold m-1"
+                              >Order ID:</label
+                            >
+                            <input
+                              type="text"
+                              id="txt-order-id"
+                              class="form-control border-1 border-dark-subtle rounded-1"
+                              pattern="^O[0-9]{3,}$"
+                            />
+                            <div class="invalid-feedback error-bg">
+                              Enter a valid ID
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <label
+                              for="txt-order-date"
+                              class="form-label fw-bold m-1"
+                              >Date:</label
+                            >
+                            <input
+                              type="date"
+                              id="txt-order-date"
+                              class="form-control border-1 border-dark-subtle rounded-1"
+                            />
+                            <div class="invalid-feedback error-bg">
+                              Enter a valid Date
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <label
+                              for="select-customer-id"
+                              class="form-label fw-bold m-1"
+                              >Customer:</label
+                            >
+                            <select
+                              id="select-customer-id"
+                              class="form-select border-1 border-dark-subtle rounded-1"
+                            >
+                              <option value="">Select</option>
+                            </select>
+                          </div>
+                          <div class="col-lg-6">
+                            <label
+                              for="txt-customer-id"
+                              class="form-label fw-bold m-1"
+                              >Customer ID:</label
+                            >
+                            <input
+                              id="txt-customer-id"
+                              type="text"
+                              class="form-control border-1 border-dark-subtle rounded-1"
+                              pattern="^C[0-9]{3,}$"
+                            />
+                            <div class="invalid-feedback error-bg">
+                              Enter a valid ID
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <label
+                              for="txt-customer-name"
+                              class="form-label fw-bold m-1"
+                              >Name:</label
+                            >
+                            <input
+                              id="txt-customer-name"
+                              type="text"
+                              class="form-control border-1 border-dark-subtle rounded-1"
+                              readonly
+                            />
+                          </div>
+                          <div class="col-lg-6">
+                            <label
+                              for="txt-customer-cno"
+                              class="form-label fw-bold m-1"
+                              >Contact No:</label
+                            >
+                            <input
+                              id="txt-customer-cno"
+                              type="text"
+                              class="form-control border-1 border-dark-subtle rounded-1"
+                              readonly
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mb-5 pb-3">
+                        <label
+                          for="txt-customer-address"
+                          class="form-label fw-bold m-1"
+                          >Address:</label
+                        >
+                        <input
+                          id="txt-customer-address"
+                          type="text"
+                          class="form-control border-1 border-dark-subtle rounded-1"
+                          readonly
+                        />
+                      </div>
+                      <div class="button-set order-btns mb-3 d-flex gap-1">
+                        <button
+                          type="button"
+                          id="delete-order-btn"
+                          class="btn btn-danger px-4 rounded-1"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="button"
+                          id="update-order-btn"
+                          class="btn btn-info text-white px-4 rounded-1"
+                        >
+                          Update
+                        </button>
+                        <button
+                          type="button"
+                          id="clear-order-btn"
+                          class="btn btn-success px-4 rounded-1"
+                        >
+                          Clear
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-7 pt-3 pt-lg-0">
+                  <div class="row m-auto">
+                    <h2
+                      class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                    >
+                      Item Select
+                    </h2>
+                    <div
+                      class="search bg-light p-3"
+                      style="min-height: 390px !important"
+                    >
+                      <form id="item-select" class="px-2">
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <label
+                                for="select-item-code"
+                                class="form-label fw-bold m-1"
+                                >Item:</label
+                              >
+                              <select
+                                id="select-item-code"
+                                class="form-select border-1 border-dark-subtle rounded-1"
+                              >
+                                <option value="">Select</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-6">
+                              <label
+                                for="txt-item-code"
+                                class="form-label fw-bold m-1"
+                                >Item ID:</label
+                              >
+                              <input
+                                id="txt-item-code"
+                                type="text"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                pattern="^I[0-9]{3,}$"
+                              />
+                              <div class="invalid-feedback error-bg">
+                                Enter a valid Item ID
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label
+                                for="txt-item-name"
+                                class="form-label fw-bold m-1"
+                                >Name:</label
+                              >
+                              <input
+                                id="txt-item-name"
+                                type="text"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                readonly
+                              />
+                            </div>
+                            <div class="col-lg-4">
+                              <label
+                                for="txt-item-price"
+                                class="form-label fw-bold m-1"
+                                >Price (Rs.):</label
+                              >
+                              <input
+                                id="txt-item-price"
+                                type="text"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                readonly
+                              />
+                            </div>
+                            <div class="col-lg-4">
+                              <label
+                                for="txt-item-qty"
+                                class="form-label fw-bold m-1"
+                                >QtyOnHand:</label
+                              >
+                              <input
+                                id="txt-item-qty"
+                                type="text"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                readonly
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-8 mb-3 mb-lg-0">
+                              <label
+                                for="txt-order-qty"
+                                class="form-label fw-bold m-1"
+                                >Order Quantity:</label
+                              >
+                              <input
+                                id="txt-order-qty"
+                                type="number"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                pattern="^[1-9][0-9]*$"
+                              />
+                              <div class="invalid-feedback error-bg">
+                                Enter a valid Quantity
+                              </div>
+                            </div>
+                            <div
+                              class="col-lg-4 mt-3 mt-lg-0 d-flex align-items-start"
+                            >
+                              <button
+                                type="submit"
+                                id="add-item-btn"
+                                class="btn btn-danger rounded-1 w-100"
+                              >
+                                Add Item
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="row pt-3 m-auto">
+                    <div
+                      class="purchase bg-light position-relative p-3"
+                      style="min-height: 390px !important"
+                    >
+                      <h3 id="lbl-total" class="text-primary">
+                        Total: 0.00Rs/=
+                      </h3>
+                      <h4 id="lbl-subtotal" class="text-danger mb-5">
+                        SubTotal: 0.00Rs/=
+                      </h4>
+                      <form id="order-payment">
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label
+                                for="txt-order-cash"
+                                class="form-label fw-bold m-1"
+                                >Cash (Rs.):</label
+                              >
+                              <input
+                                id="txt-order-cash"
+                                type="number"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                pattern="^\d+(\.\d{1,2})?$"
+                              />
+                              <div class="invalid-feedback error-bg">
+                                Enter a valid Price
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <label
+                                for="txt-order-discount"
+                                class="form-label fw-bold m-1"
+                                >Discount (%):</label
+                              >
+                              <input
+                                id="txt-order-discount"
+                                type="number"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                pattern="^(?:100(?:\.0{1,2})?|\d{1,2}(?:\.\d{1,2})?)$"
+                              />
+                              <div class="invalid-feedback error-bg">
+                                Enter a valid Discount
+                              </div>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                              <label
+                                for="txt-order-balance"
+                                class="form-label fw-bold m-1"
+                                >Balance (Rs.):</label
+                              >
+                              <input
+                                id="txt-order-balance"
+                                type="text"
+                                class="form-control border-1 border-dark-subtle rounded-1"
+                                readonly
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          id="order-purchase-btn"
+                          class="btn btn-success my-3 purchase-btn"
+                        >
+                          Purchase
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row table-content mt-3 m-auto">
+                <div class="col-12">
+                  <div class="table-responsive text-center">
+                    <table class="table table-hover">
+                      <thead class="table-success">
+                        <tr>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 15%"
+                          >
+                            Item Code
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 25%"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 15%"
+                          >
+                            Unit Price
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 15%"
+                          >
+                            Quantity
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 15%"
+                          >
+                            Total
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 15%"
+                          >
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        id="order-detail-tbody"
+                        class="border-1 border-success-subtle"
+                      ></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Items Section -->
+      <section id="tab-content-4" class="d-none">
+        <div class="container">
+          <div class="row label p-2 m-auto">
+            <div class="col-lg-12">
+              <h1 class="fw-medium text-start my-auto">
+                <i class="fa-solid fa-cubes"></i>
+                Items
+              </h1>
+            </div>
+          </div>
+          <div class="row content p-1 m-auto">
+            <div class="col-lg-12 px-0 py-3 px-lg-3">
+              <div class="row m-auto">
+                <div class="col-lg-6">
+                  <h2
+                    class="fw-normal fs-5 ps-3 p-2 m-0 w-100 bg-success text-light"
+                  >
+                    Item Search
+                  </h2>
+                  <div class="search bg-light p-3">
+                    <form id="search-item" class="px-2" action="search">
+                      <div class="mb-3">
+                        <input
+                          type="text"
+                          id="txt-search-valuei"
+                          class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                          placeholder="Input Code/Name Here"
+                        />
+                        <div class="invalid-feedback error-bg">
+                          Please enter a valid Code or Name
+                        </div>
+                        <div class="d-flex mt-3">
+                          <button
+                            type="submit"
+                            class="btn btn-success rounded-1"
+                          >
+                            Search
+                          </button>
+                          <select
+                            id="search-item-by"
+                            class="form-select ms-2 w-25 border-1 border-dark-subtle rounded-1"
+                          >
+                            <option>Code</option>
+                            <option>Name</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="col-lg-6 pt-3 pt-lg-0 d-flex justify-content-lg-end justify-content-center"
+                >
+                  <div class="w-75">
+                    <button
+                      class="btn btn-info px-4 rounded-1 w-100 mb-1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#newItemModal"
+                    >
+                      New Item
+                    </button>
+                    <button
+                      id="load-all-item-btn"
+                      class="btn btn-warning px-4 rounded-1 w-100"
+                    >
+                      View All Items
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row button-set m-auto">
+                <div class="col-12 px-3">
+                  <div
+                    class="p-lg-3 py-3 d-flex justify-content-lg-start justify-content-center gap-1"
+                  >
+                    <button
+                      id="delete-item-btn"
+                      class="btn btn-danger px-4 rounded-1"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      class="btn btn-info text-white px-4 rounded-1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#updateItemModal"
+                    >
+                      Update
+                    </button>
+                    <button
+                      id="clear-item-btn"
+                      class="btn btn-success text-white px-4 rounded-1"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row table-content m-auto">
+                <div class="col-12">
+                  <div class="table-responsive text-center">
+                    <table class="table table-hover">
+                      <thead class="table-success">
+                        <tr>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 20%"
+                          >
+                            Item Code
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 30%"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 30%"
+                          >
+                            Quantity
+                          </th>
+                          <th
+                            class="border-1 border-success-subtle"
+                            style="width: 20%"
+                          >
+                            Unit Price
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        id="item-tbody"
+                        class="border-1 border-success-subtle"
+                      ></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------ New Item Model ------------ -->
+        <div class="modal fade" id="newItemModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+              <div class="modal-header bg-success text-white rounded-0">
+                <h5 class="modal-title">New Item</h5>
+                <button
+                  type="button"
+                  id="close-savei-icon"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form id="save-item">
+                  <div class="mb-1">
+                    <label for="txt-save-icode" class="form-label fw-bold"
+                      >Item Code :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-save-icode"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^I[0-9]{3,}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Item Code is required [ Pattern : I00X ]
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-save-iname" class="form-label fw-bold"
+                      >Item Name :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-save-iname"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^[a-zA-Z0-9\s\-\']{1,50}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Item name is required and must follow the correct format
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-save-iqty" class="form-label fw-bold"
+                      >Item Quantity :</label
+                    >
+                    <input
+                      type="number"
+                      id="txt-save-iqty"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^[1-9][0-9]*$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Item quantity is required and must be a positive integer
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-save-iprice" class="form-label fw-bold"
+                      >Item Unit Price :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-save-iprice"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^\d+(\.\d{1,2})?$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Enter a valid price (e.g., 10 or 10.99)
+                    </div>
+                  </div>
+
+                  <div class="modal-footer button-set mt-4">
+                    <button
+                      type="submit"
+                      class="btn btn-info rounded-1 text-light"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      id="close-savei-btn"
+                      class="btn btn-danger rounded-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------ Update Item Model ------------ -->
+        <div class="modal fade" id="updateItemModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+              <div class="modal-header bg-success text-white rounded-0">
+                <h5 class="modal-title">Update Item</h5>
+                <button
+                  type="button"
+                  id="close-updatei-icon"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form id="update-item">
+                  <div class="mb-1">
+                    <label for="txt-update-icode" class="form-label fw-bold"
+                      >Item Code :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-update-icode"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^I[0-9]{3,}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Item Code is required [ Pattern : I00X ]
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-update-iname" class="form-label fw-bold"
+                      >Item Name :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-update-iname"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^[a-zA-Z0-9\s\-\']{1,50}$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Item name is required and must follow the correct format
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-update-iqty" class="form-label fw-bold"
+                      >Item Quantity :</label
+                    >
+                    <input
+                      type="number"
+                      id="txt-update-iqty"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^[1-9][0-9]*$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Item quantity is required and must be a positive integer
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <label for="txt-update-iprice" class="form-label fw-bold"
+                      >Item Unit Price :</label
+                    >
+                    <input
+                      type="text"
+                      id="txt-update-iprice"
+                      class="form-control border-1 border-dark-subtle rounded-1 my-0"
+                      pattern="^\d+(\.\d{1,2})?$"
+                    />
+                    <div class="invalid-feedback error-bg">
+                      Enter a valid price (e.g., 10 or 10.99)
+                    </div>
+                  </div>
+
+                  <div class="modal-footer button-set mt-4">
+                    <button
+                      type="submit"
+                      class="btn btn-info rounded-1 text-light"
+                    >
+                      Update
+                    </button>
+                    <button
+                      type="button"
+                      id="close-updatei-btn"
+                      class="btn btn-danger rounded-1"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Success Toast -->
+      <div
+        id="success-toast"
+        class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">Success! Messege.</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
+      <!-- Error Toast -->
+      <div
+        id="error-toast"
+        class="toast align-items-center text-white bg-danger border-0 position-fixed bottom-0 end-0 m-3"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">Error! Messege.</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
+      <!-- Confirm Delete Modal -->
+      <div
+        class="modal fade"
+        id="confirm-delete-model"
+        tabindex="-1"
+        aria-labelledby="confirmDeleteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmDeleteModalLabel">
+                Confirm Deletion
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">Messege</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="confirm-delete-btn"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/util/ScriptLoader.js"></script>
+  </body>
 </html>
