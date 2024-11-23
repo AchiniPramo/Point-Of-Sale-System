@@ -77,12 +77,6 @@ Follow these steps to set up the POS system locally:
 
 ---
 
-## 📄 Documentation
-
-- For detailed instructions and troubleshooting, refer to the [Documentation](https://github.com/yourusername/pos-system/wiki).
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Follow these steps to contribute:
