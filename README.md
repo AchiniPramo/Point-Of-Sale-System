@@ -63,20 +63,6 @@ Follow these steps to set up the POS system locally:
    ```
 
 ---
-
-## 📸 Screenshots
-
-### 🛍️ Dashboard
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+Screenshot)
-
-### 📦 Inventory Management
-![Inventory](https://via.placeholder.com/800x400?text=Inventory+Management)
-
-### 💳 Billing Interface
-![Billing](https://via.placeholder.com/800x400?text=Billing+Interface)
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Follow these steps to contribute:
