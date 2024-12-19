@@ -102,7 +102,7 @@
 
 #success-toast,
 #error-toast {
-  z-index: 1070 !important; /* Higher than modal's z-index */
+  z-index: 1070 !important;
 }
 
 @media (min-width: 992px) {
